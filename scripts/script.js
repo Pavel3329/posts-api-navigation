@@ -11,6 +11,8 @@ const BASE_URL = "https://jsonplaceholder.typicode.com";
 
 let postNumber = Number(localStorage.getItem("postNumber")) || 1;
 
+let isDisabled = false;
+
 const getPostById = async () => {
   try {
     const response = await fetch(`${BASE_URL}/posts/${postNumber}`);
@@ -49,19 +51,32 @@ const loadPost = async () => {
 loadPost();
 
 nextPostBtn.addEventListener("click", () => {
+  if (isDisabled) return;
+
+  isDisabled = true;
+
   if (postNumber < 100) {
     postNumber++;
     localStorage.setItem("postNumber", postNumber);
     loadPost();
   }
+  setTimeout(() => {
+    isDisabled = false;
+  }, 350);
 });
 
 prevPostBtn.addEventListener("click", () => {
+  if (isDisabled) return;
+
+  isDisabled = true;
   if (postNumber > 1) {
     postNumber--;
     localStorage.setItem("postNumber", postNumber);
     loadPost();
   }
+  setTimeout(() => {
+    isDisabled = false;
+  }, 350);
 });
 
 // ........................................................................
