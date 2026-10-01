@@ -49,15 +49,19 @@ const loadPost = async () => {
 loadPost();
 
 nextPostBtn.addEventListener("click", () => {
-  postNumber++;
-  localStorage.setItem("postNumber", postNumber);
-  loadPost();
+  if (postNumber < 100) {
+    postNumber++;
+    localStorage.setItem("postNumber", postNumber);
+    loadPost();
+  }
 });
 
 prevPostBtn.addEventListener("click", () => {
-  postNumber--;
-  localStorage.setItem("postNumber", postNumber);
-  loadPost();
+  if (postNumber > 1) {
+    postNumber--;
+    localStorage.setItem("postNumber", postNumber);
+    loadPost();
+  }
 });
 
 // ........................................................................
