@@ -34,3 +34,23 @@ button:hover {
 .subheader {
   font-size: 30px;
 }
+
+.loading {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
+
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

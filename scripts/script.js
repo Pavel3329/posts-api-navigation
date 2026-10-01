@@ -44,6 +44,13 @@ const renderPost = (post) => {
 };
 
 const loadPost = async () => {
+  postContainer.textContent = "";
+
+  const loading = document.createElement("p");
+  loading.textContent = "Loading...";
+  loading.classList.add("loading");
+
+  postContainer.append(loading);
   const postData = await getPostById();
   renderPost(postData);
 };
@@ -60,6 +67,7 @@ nextPostBtn.addEventListener("click", () => {
     localStorage.setItem("postNumber", postNumber);
     loadPost();
   }
+
   setTimeout(() => {
     isDisabled = false;
   }, 350);
@@ -93,7 +101,5 @@ prevPostBtn.addEventListener("click", () => {
 // ---- .localStorage 2.Loading, 3.Валидация 4.Debounce (350ms - 1 click) ----
 
 // ...........
-
-// каждый раз когда загружается getPostById обновляется/ Алзо, между загрузками postContainer...
 
 // - Залить в GitHub
